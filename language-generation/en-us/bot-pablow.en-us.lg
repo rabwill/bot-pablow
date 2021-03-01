@@ -1,0 +1,12 @@
+[import](common.lg)
+
+# SendActivity_Welcome
+- ${WelcomeUser()}
+
+# SendActivity_003038
+- You said '${turn.activity.text}'
+
+# OAuthInput_InvalidPrompt_hYFwxs()
+- Sorry something went wrong
+# SendActivity_946u1H()
+- - Hello there, ${dialog.me.content.displayName}
