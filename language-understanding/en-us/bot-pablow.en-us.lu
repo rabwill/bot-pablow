@@ -1,0 +1,14 @@
+
+# whatsup
+> add some example phrases to trigger this intent:
+- what's up
+- whats up
+- whatsup
+- what's going on
+- what are others doing
+- what's happening around me
+> - please tell me the weather
+> - what is the weather like in {city=Seattle}
+
+> entity definitions:
+> @ ml city

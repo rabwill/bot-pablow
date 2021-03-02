@@ -93,6 +93,24 @@
           ]
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "eziGm2",
+        "name": "whatsup"
+      },
+      "intent": "whatsup",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "aw9gIL"
+          },
+          "activityProcessed": true,
+          "dialog": "whatsup"
+        }
+      ]
     }
   ],
   "generator": "bot-pablow.lg",
