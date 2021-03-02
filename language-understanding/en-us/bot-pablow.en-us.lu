@@ -12,3 +12,10 @@
 
 > entity definitions:
 > @ ml city
+
+# nextmeeting
+> add some example phrases to trigger this intent:
+- next meeting
+- thank you, next!
+- next please
+- next

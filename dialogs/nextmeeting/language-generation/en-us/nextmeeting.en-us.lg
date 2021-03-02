@@ -1,0 +1,27 @@
+[import](common.lg)
+
+# SendActivity_dNnCXb()
+- Let's look at your next meeting
+# OAuthInput_InvalidPrompt_QDviRT()
+- Sorry something went wrong
+# MeetingAdaptiveCard()
+[Activity  
+ Attachments = ${json(genMeetingAdaptiveCard(dialog.meeting.content.value))}
+ ]
+# genMeetingAdaptiveCard(data)
+-``` 
+{   
+  "type": "AdaptiveCard", 
+    "body": [   {       
+    "type": "TextBlock",        
+    "text": "Next meeting for you",     
+      "wrap": true,      
+      "weight": "Bolder"         },         {             "type": "Container",             "items": [          ${join(foreach(data, value, genMeetingAdaptiveCardItems(value)), ',')}             ]         }     ],     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",     "version": "1.2" } 
+
+```
+# genMeetingAdaptiveCardItems(item)
+-``` 
+{   "type": "ColumnSet",   "columns": [     {       "type": "Column",       "width": "auto",       "items": [         {           "type": "Image",           "url": ""         }       ]     },     {       "type": "Column",       "width": "stretch",       "items": [         {           "type": "TextBlock",           "text": "${item.subject}",           "wrap": true,           "size": "Small",           "weight": "Bolder"         },         {           "type": "TextBlock",           "text": "${item.subject}",           "wrap": true,           "size": "Small",           "isSubtle": true         }       ]     },     {       "type": "Column",       "width": "auto",       "items": [         {           "type": "ActionSet",           "actions": [             {               "type": "Action.OpenUrl",               "title": "Go to meeting",               "style": "positive",               "url": "${item.webLink}"             }           ],           "horizontalAlignment": "Right"         }       ]     }   ] } 
+```
+# SendActivity_qpulix()
+- ${MeetingAdaptiveCard()}

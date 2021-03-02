@@ -1,9 +1,9 @@
 {
   "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
-    "id": "iAtKin",
-    "name": "whatsup",
-    "description": "Get information about what's happening around the current user"
+    "id": "AYp4qv",
+    "name": "nextmeeting",
+    "description": ""
   },
   "autoEndDialog": true,
   "defaultResultProperty": "dialog.result",
@@ -13,64 +13,66 @@
       "$designer": {
         "name": "BeginDialog",
         "description": "",
-        "id": "1irKMt"
+        "id": "ak4Cxy"
       },
       "actions": [
         {
           "$kind": "Microsoft.SendActivity",
           "$designer": {
-            "id": "zgg8sk"
+            "id": "dNnCXb"
           },
-          "activity": "${SendActivity_zgg8sk()}"
+          "activity": "${SendActivity_dNnCXb()}"
         },
         {
           "$kind": "Microsoft.OAuthInput",
           "$designer": {
-            "id": "P8ItNu"
+            "id": "QDviRT"
           },
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph-whatsup",
-          "text": "Please sign in to Microsoft 365 first",
+          "connectionName": "graph-nextmeeting",
+          "text": "Please sign in to Graph",
+          "title": "Login",
           "property": "dialog.auth",
-          "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",
-          "title": "Sign in to Microsoft 365",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_QDviRT()}",
           "alwaysPrompt": false
         },
         {
           "$kind": "Microsoft.HttpRequest",
           "$designer": {
-            "id": "HKmpkt"
+            "id": "u1WrRo"
           },
           "method": "GET",
-          "url": "https://graph.microsoft.com/v1.0/me/insights/trending",
+          "contentType": "application/json",
+          "responseType": "json",
+          "resultProperty": "dialog.meeting",
+          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$top=1\",\"StartTime\",utcNow())",
           "headers": {
             "Authorization": "Bearer ${dialog.auth.token}"
-          },
-          "resultProperty": "dialog.whatsup",
-          "responseType": "json"
+          }
         },
         {
           "$kind": "Microsoft.Foreach",
           "$designer": {
-            "id": "9crMh2"
+            "id": "nVLJuh"
           },
           "index": "dialog.foreach.index",
           "value": "dialog.foreach.value",
-          "itemsProperty": "dialog.whatsup.content.value"
+          "itemsProperty": "dialog.meeting.content.value",
+          "actions": []
         },
         {
           "$kind": "Microsoft.SendActivity",
           "$designer": {
-            "id": "3BbPsk"
+            "id": "qpulix"
           },
-          "activity": "${SendActivity_3BbPsk()}"
+          "activity": "${SendActivity_qpulix()}"
         }
       ]
     }
   ],
-  "generator": "whatsup.lg",
-  "recognizer": "whatsup.lu.qna",
-  "id": "whatsup"
+  "generator": "nextmeeting.lg",
+  "recognizer": "nextmeeting.lu.qna",
+  "id": "nextmeeting"
 }
