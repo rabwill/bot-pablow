@@ -1,0 +1,10 @@
+{
+  "bot-pablow.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "whatsup": [
+        "whatsup.en-us"
+      ]
+    }
+  }
+}
