@@ -41,33 +41,47 @@
         {
           "$kind": "Microsoft.HttpRequest",
           "$designer": {
-            "id": "u1WrRo"
+            "id": "wj66fZ"
           },
           "method": "GET",
-          "contentType": "application/json",
-          "responseType": "json",
-          "resultProperty": "dialog.meeting",
-          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$top=1\",\"StartTime\",utcNow())",
+          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$top=2&$orderby= Start/DateTime asc\",\"StartTime\",utcNow())",
           "headers": {
             "Authorization": "Bearer ${dialog.auth.token}"
-          }
+          },
+          "resultProperty": "dialog.meeting",
+          "responseType": "json"
         },
         {
-          "$kind": "Microsoft.Foreach",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "nVLJuh"
+            "id": "4gc7CN"
           },
-          "index": "dialog.foreach.index",
-          "value": "dialog.foreach.value",
-          "itemsProperty": "dialog.meeting.content.value",
-          "actions": []
-        },
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "qpulix"
-          },
-          "activity": "${SendActivity_qpulix()}"
+          "condition": "=count(dialog.meeting.content.value)!=0",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "KwEpvE"
+              },
+              "activity": "${SendActivity_KwEpvE()}"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "KdAAYL"
+              },
+              "activity": "${SendActivity_KdAAYL()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "O9FDc1"
+              },
+              "activity": "${SendActivity_O9FDc1()}"
+            }
+          ]
         }
       ]
     }

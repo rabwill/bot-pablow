@@ -4,24 +4,120 @@
 - Let's look at your next meeting
 # OAuthInput_InvalidPrompt_QDviRT()
 - Sorry something went wrong
-# MeetingAdaptiveCard()
+# MeetingAdaptiveCard(response)
 [Activity  
- Attachments = ${json(genMeetingAdaptiveCard(dialog.meeting.content.value))}
+ Attachments = ${json(genMeetingAdaptiveCard(response))}
  ]
 # genMeetingAdaptiveCard(data)
 -``` 
-{   
-  "type": "AdaptiveCard", 
-    "body": [   {       
-    "type": "TextBlock",        
-    "text": "Next meeting for you",     
-      "wrap": true,      
-      "weight": "Bolder"         },         {             "type": "Container",             "items": [          ${join(foreach(data, value, genMeetingAdaptiveCardItems(value)), ',')}             ]         }     ],     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",     "version": "1.2" } 
-
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "padding": "Default",
+            "spacing": "None",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "horizontalAlignment": "Left",
+                    "color": "Dark",
+                    "size":"Medium",
+                    "text": "Your up coming meetings",
+                    "wrap": true
+                }
+            ],
+            "separator": true
+        },
+        {
+            "type": "Container",
+            "items": [ ${join(foreach(data, value, genMeetingAdaptiveCardItems(value)), ',')}  ]
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
 ```
 # genMeetingAdaptiveCardItems(item)
 -``` 
-{   "type": "ColumnSet",   "columns": [     {       "type": "Column",       "width": "auto",       "items": [         {           "type": "Image",           "url": ""         }       ]     },     {       "type": "Column",       "width": "stretch",       "items": [         {           "type": "TextBlock",           "text": "${item.subject}",           "wrap": true,           "size": "Small",           "weight": "Bolder"         },         {           "type": "TextBlock",           "text": "${item.subject}",           "wrap": true,           "size": "Small",           "isSubtle": true         }       ]     },     {       "type": "Column",       "width": "auto",       "items": [         {           "type": "ActionSet",           "actions": [             {               "type": "Action.OpenUrl",               "title": "Go to meeting",               "style": "positive",               "url": "${item.webLink}"             }           ],           "horizontalAlignment": "Right"         }       ]     }   ] } 
+ {
+      "type": "ColumnSet",
+      "columns": [
+ {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "**${item.subject}**",
+              "wrap": true
+            },
+           
+{
+    "type": "ColumnSet",
+    "columns": [    
+     
+        {
+            "type": "Column",
+             "width": "stretch",
+                "spacing": "Small",
+                "padding": "None",              
+            "items": [
+               
+                {
+                    "type": "FactSet",
+                    "id":"${item.id}",
+                    "facts": [                      
+                        {
+                            "title":"From",
+                            "value": "${formatDateTime(item.start.dateTime ,"dd/MM/yyyy hh:mm tt")}"
+                        },
+                        {
+                            "title":"To",
+                           "value": "${formatDateTime(item.end.dateTime ,"dd/MM/yyyy hh:mm tt")}"
+                        }
+                       
+                    ]
+                }
+            ],
+            "padding": {
+                "top": "Default",
+                "bottom": "None",
+                "left": "Default",
+                "right": "Default"
+            },
+            "spacing": "None"
+        },
+        {
+            "type": "Column",
+            "width": "auto",
+            "items": [
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                            "type": "Action.OpenUrl",
+                            "title": "Go to meeting",
+                            "style": "positive",
+                            "url": "${item.webLink}"
+                        }
+                    ],
+                    "horizontalAlignment": "Right"
+                }
+                
+            ]
+        }
+    ]
+} 
+  ],
+          "width": 40
+        }]}
+
 ```
-# SendActivity_qpulix()
-- ${MeetingAdaptiveCard()}
+
+# SendActivity_KdAAYL()
+- ${MeetingAdaptiveCard(dialog.meeting.content.value)}
+
+# SendActivity_O9FDc1()
+- You have a quiet day further, get yourself a nice drink 😍
+# SendActivity_KwEpvE()
+- You have ${count(dialog.meeting.content.value)} **meetings** dear 🙄
