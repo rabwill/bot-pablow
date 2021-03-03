@@ -126,3 +126,11 @@
 - You have a quiet day further, get yourself a nice drink 😍
 # SendActivity_KwEpvE()
 - You have ${count(dialog.meeting.content.value)} **meetings** dear 🙄
+# SendActivity_X5APeE()
+- ${MeetingAdaptiveCard(dialog.meeting.content.value)}
+# SendActivity_z7m2ES()
+- ${MeetingAdaptiveCard(subArray(dialog.meeting.content.value,0,count(dialog.meeting.content.value)-(dialog.meetingCount-1)))}
+
+
+# SendActivity_sOPQIY()
+- You have ${count(dialog.meeting.content.value)} **meetings** 🙄
