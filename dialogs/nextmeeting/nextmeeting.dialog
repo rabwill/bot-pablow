@@ -17,11 +17,12 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SendActivity",
+          "$kind": "Microsoft.SetProperty",
           "$designer": {
-            "id": "dNnCXb"
+            "id": "HCVYq5"
           },
-          "activity": "${SendActivity_dNnCXb()}"
+          "property": "dialog.meetingCount",
+          "value": "=int(coalesce(@meetingCount, $meetingCount))"
         },
         {
           "$kind": "Microsoft.OAuthInput",
@@ -31,7 +32,7 @@
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph",
+          "connectionName": "graph-nextmeeting",
           "text": "Please sign in to Graph",
           "title": "Login",
           "property": "dialog.auth",
@@ -44,7 +45,7 @@
             "id": "wj66fZ"
           },
           "method": "GET",
-          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$top=2&$orderby= Start/DateTime asc\",\"StartTime\",utcNow())",
+          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$orderby= Start/DateTime asc\",\"StartTime\",utcNow())",
           "headers": {
             "Authorization": "Bearer ${dialog.auth.token}"
           },
@@ -59,18 +60,36 @@
           "condition": "=count(dialog.meeting.content.value)!=0",
           "actions": [
             {
-              "$kind": "Microsoft.SendActivity",
+              "$kind": "Microsoft.IfCondition",
               "$designer": {
-                "id": "KwEpvE"
+                "id": "GLNaRo"
               },
-              "activity": "${SendActivity_KwEpvE()}"
-            },
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "KdAAYL"
-              },
-              "activity": "${SendActivity_KdAAYL()}"
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "z7m2ES"
+                  },
+                  "activity": "${SendActivity_z7m2ES()}"
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "sOPQIY"
+                  },
+                  "activity": "${SendActivity_sOPQIY()}"
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "X5APeE"
+                  },
+                  "activity": "${SendActivity_X5APeE()}"
+                }
+              ],
+              "condition": "dialog.meetingCount>0"
             }
           ],
           "elseActions": [

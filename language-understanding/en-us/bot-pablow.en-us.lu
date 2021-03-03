@@ -19,8 +19,10 @@
 - thank you, next!
 - next please
 - next
-
-
+- next {meetingCount=0} meetings
+- next {meetingCount=0} meetings please
+-  meetings for today
+- today's meetings
 # whatsnext
 > add some example phrases to trigger this intent:
 - what's next
