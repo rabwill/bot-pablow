@@ -11,6 +11,12 @@
       "whatsnext": [
         "nextmeeting.en-us",
         "nexttask.en-us"
+      ],
+      "meetingstomorrow": [
+        "getMeetings.en-us"
+      ],
+      "meetingstoday": [
+        "getMeetings.en-us"
       ]
     }
   }

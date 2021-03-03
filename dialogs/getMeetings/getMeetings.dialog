@@ -1,0 +1,48 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "39FUvE",
+    "name": "getMeetings",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "2hzw9E"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "30msGo"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "graph",
+          "text": "Please sign in to Microsoft 365",
+          "title": "Login",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_QDviRT()}",
+          "alwaysPrompt": false,
+          "disabled": true
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "NyyTBj"
+          },
+          "activity": "${SendActivity_NyyTBj()}"
+        }
+      ]
+    }
+  ],
+  "generator": "getMeetings.lg",
+  "recognizer": "getMeetings.lu.qna",
+  "id": "getMeetings"
+}

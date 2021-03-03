@@ -21,8 +21,8 @@
 - next
 - next {meetingCount=0} meetings
 - next {meetingCount=0} meetings please
--  meetings for today
-- today's meetings
+>-  meetings for today
+>- today's meetings
 # whatsnext
 > add some example phrases to trigger this intent:
 - what's next
@@ -30,6 +30,22 @@
 - what's coming
 - whatscoming
 - what should i do next
+
+> entity definitions:
+> @ ml city
+
+# meetingstomorrow
+> add some example phrases to trigger this intent:
+- meetings tomorrow
+> - what is the weather like in {city=Seattle}
+
+> entity definitions:
+> @ ml city
+
+# meetingstoday
+> add some example phrases to trigger this intent:
+- meetings today
+> - what is the weather like in {city=Seattle}
 
 > entity definitions:
 > @ ml city

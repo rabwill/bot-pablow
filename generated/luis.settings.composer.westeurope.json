@@ -2,7 +2,7 @@
     "luis": {
         "bot_pablow_en_us_lu": {
             "appId": "87bd00aa-efad-4cf9-948a-c0badd93f579",
-            "version": "0.7"
+            "version": "0.9"
         }
     }
 }

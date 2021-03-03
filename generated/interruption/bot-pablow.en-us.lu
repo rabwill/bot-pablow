@@ -23,8 +23,6 @@
 - next
 - next {@meetingCount=0} meetings
 - next {@meetingCount=0} meetings please
-- meetings for today
-- today's meetings
 
 
 # whatsnext
@@ -33,6 +31,14 @@
 - what's coming
 - whatscoming
 - what should i do next
+
+
+# meetingstomorrow
+- meetings tomorrow
+
+
+# meetingstoday
+- meetings today
 
 
 > # Entity definitions
