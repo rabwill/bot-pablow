@@ -19,6 +19,11 @@
 - Set a reminder to {taskName=breathe}
 - I have to remember to {taskName=take a walk}
 - Remind me to {taskName=calculate pi to 100 digits}
+- Remind me to {taskName=walk the dog} in {datetimeV2:when=1 hour}
+- I need to {taskName=think} at {datetimeV2:when=2 tomorrow}
+- Remember I should {taskName=write some code} {datetimeV2:when=thursday at noon}
+- Remind me to {taskName=brush the cat} {datetimev2.when=tomorrow at 2}
 
 > entity definitions
 @ml taskName
+@ prebuilt datetimeV2 hasroles when

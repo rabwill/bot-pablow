@@ -25,6 +25,10 @@
             {
               "property": "dialog.taskName",
               "value": "=@taskName"
+            },
+            {
+              "property": "dialog.whenTimex",
+              "value": "=@when"
             }
           ]
         },
@@ -43,6 +47,86 @@
           "invalidPrompt": "",
           "defaultValueResponse": "",
           "property": "dialog.taskName"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "r3h9aT",
+            "name": "If we need to prompt for reminder time"
+          },
+          "condition": "=dialog.whenTimex==null||indexOf(dialog.whenTimex.timex[0],'T')<0",
+          "actions": [
+            {
+              "$kind": "Microsoft.DateTimeInput",
+              "$designer": {
+                "id": "EhCO9D",
+                "name": "Prompt for reminder time"
+              },
+              "disabled": false,
+              "maxTurnCount": 3,
+              "alwaysPrompt": true,
+              "allowInterruptions": false,
+              "prompt": "${DateTimeInput_Prompt_EhCO9D()}",
+              "unrecognizedPrompt": "",
+              "invalidPrompt": "",
+              "defaultValueResponse": "",
+              "property": "dialog.whenTimex"
+            },
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "KaPAbu",
+                "name": "Calcuate reminder datetime"
+              },
+              "property": "dialog.when",
+              "value": "=formatDateTime(dialog.whenTimex[0].Value)"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "zTlaWp"
+              },
+              "activity": "${SendActivity_zTlaWp()}"
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "uKLECH",
+                "name": "Calcuate reminder datetime"
+              },
+              "assignments": [
+                {
+                  "property": "turn.timex",
+                  "value": "=dialog.whenTimex.timex[0]"
+                },
+                {
+                  "property": "turn.timexDate",
+                  "value": "=split(turn.timex,\"T\")[0]"
+                },
+                {
+                  "property": "turn.timexTime",
+                  "value": "=substring(split(turn.timex,\"T\")[1]&\":00:00\",0,5)"
+                },
+                {
+                  "property": "turn.value",
+                  "value": "=turn.timexDate&' '&turn.timexTime"
+                },
+                {
+                  "property": "dialog.when",
+                  "value": "=formatDateTime(turn.value)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "j8LLmz"
+          },
+          "activity": "${SendActivity_j8LLmz()}"
         },
         {
           "$kind": "Microsoft.BeginDialog",

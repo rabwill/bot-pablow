@@ -70,13 +70,6 @@
             "id": "incZIp"
           },
           "activity": "${SendActivity_incZIp()}"
-        },
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "v8Np0L"
-          },
-          "activity": "${SendActivity_v8Np0L()}"
         }
       ]
     },

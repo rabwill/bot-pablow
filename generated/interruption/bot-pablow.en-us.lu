@@ -22,14 +22,22 @@
 - Set a reminder to {@taskName=breathe}
 - I have to remember to {@taskName=take a walk}
 - Remind me to {@taskName=calculate pi to 100 digits}
+- Remind me to {@taskName=walk the dog} in {@when=1 hour}
+- I need to {@taskName=think} at {@when=2 tomorrow}
+- Remember I should {@taskName=write some code} {@when=thursday at noon}
+- Remind me to {@taskName=brush the cat} {@datetimev2.when=tomorrow at 2}
 
 
 > # Entity definitions
 
 @ ml taskName
 
+@ ml datetimev2.when
+
 
 > # PREBUILT Entity definitions
+
+@ prebuilt datetimeV2 hasRole when
 
 
 > # Phrase list definitions

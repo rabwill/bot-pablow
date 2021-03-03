@@ -9,5 +9,13 @@
         "remindme.en-us"
       ]
     }
+  },
+  "remindme.en-us": {
+    "rootDialog": false,
+    "triggers": {
+      "": [
+        "remindme-addtask.en-us"
+      ]
+    }
   }
 }
