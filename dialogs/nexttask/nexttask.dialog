@@ -39,6 +39,19 @@
           "alwaysPrompt": false
         },
         {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "N3ADLh"
+          },
+          "method": "GET",
+          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/tasks/tasks?$filter=dueDateTime/dateTime ge '${startOfDay(utcNow())}' and dueDateTime/dateTime lt '${startOfDay(getFutureTime(1, 'Day'))}'",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}"
+          },
+          "responseType": "json",
+          "resultProperty": "dialog.tasks"
+        },
+        {
           "$kind": "Microsoft.SetProperty",
           "$designer": {
             "id": "Boharl"
@@ -86,7 +99,8 @@
               "linkedResources@odata.associationLink": "https://graph.microsoft.com/v1.0/users('dc0e7738-56ef-4a41-8513-aeb7dcf86cf8')/todo/lists('AQMkAGZiMGM2YTU0LTU3MTEALTRlZQEtYWMzNy1jYTlkOWMwNTI5YzIALgAAA-3MU_U--GBCjmkwABVlbB8BAE7b_I7Mi7ZMuk__xlm8UIEAAAIBEgAAAA%3D%3D')/tasks('AAMkAGZiMGM2YTU0LTU3MTEtNGVlZS1hYzM3LWNhOWQ5YzA1MjljMgBGAAAAAAD9zFPlP-xgQo5pMAAVZWwfBwBO2-iOzIu2TLpPvsZZvFCBAAAAAAESAABO2-iOzIu2TLpPvsZZvFCBAAAPb9ZOAAA%3D')/linkedResources/$ref",
               "linkedResources@odata.navigationLink": "https://graph.microsoft.com/v1.0/users('dc0e7738-56ef-4a41-8513-aeb7dcf86cf8')/todo/lists('AQMkAGZiMGM2YTU0LTU3MTEALTRlZQEtYWMzNy1jYTlkOWMwNTI5YzIALgAAA-3MU_U--GBCjmkwABVlbB8BAE7b_I7Mi7ZMuk__xlm8UIEAAAIBEgAAAA%3D%3D')/tasks('AAMkAGZiMGM2YTU0LTU3MTEtNGVlZS1hYzM3LWNhOWQ5YzA1MjljMgBGAAAAAAD9zFPlP-xgQo5pMAAVZWwfBwBO2-iOzIu2TLpPvsZZvFCBAAAAAAESAABO2-iOzIu2TLpPvsZZvFCBAAAPb9ZOAAA%3D')/linkedResources"
             }
-          ]
+          ],
+          "disabled": true
         },
         {
           "$kind": "Microsoft.IfCondition",
