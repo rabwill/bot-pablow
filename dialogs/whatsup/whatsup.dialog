@@ -31,7 +31,7 @@
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph-whatsup",
+          "connectionName": "graph",
           "text": "Please sign in to Microsoft 365 first",
           "property": "dialog.auth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",

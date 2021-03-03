@@ -19,3 +19,15 @@
 - thank you, next!
 - next please
 - next
+
+
+# whatsnext
+> add some example phrases to trigger this intent:
+- what's next
+- whatsnext
+- what's coming
+- whatscoming
+- what should i do next
+
+> entity definitions:
+> @ ml city

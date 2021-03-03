@@ -31,7 +31,7 @@
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph-nextmeeting",
+          "connectionName": "graph",
           "text": "Please sign in to Graph",
           "title": "Login",
           "property": "dialog.auth",

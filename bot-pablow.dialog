@@ -130,6 +130,32 @@
           "options": {}
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "hk84ig",
+        "name": "whatsnext"
+      },
+      "intent": "whatsnext",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "hkZppB"
+          },
+          "activityProcessed": true,
+          "dialog": "nextmeeting"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "v62nIn"
+          },
+          "activityProcessed": true,
+          "dialog": "nexttask"
+        }
+      ]
     }
   ],
   "generator": "bot-pablow.lg",
