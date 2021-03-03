@@ -13,22 +13,27 @@
 {
     "type": "AdaptiveCard",
     "body": [
-        {
-            "type": "Container",
-            "padding": "Default",
-            "spacing": "None",
-            "items": [
-                {
-                    "type": "TextBlock",
-                    "horizontalAlignment": "Left",
-                    "color": "Dark",
-                    "size":"Medium",
-                    "text": "Your up coming meetings",
-                    "wrap": true
-                }
-            ],
-            "separator": true
-        },
+           {
+                    "type": "ColumnSet",
+                    "style": "emphasis",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Upcoming meetings",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch",
+                            "padding": "None"
+                        }
+                       
+                    ],
+                    "padding": "Default",
+                    "spacing": "None"
+                },
         {
             "type": "Container",
             "items": [ ${join(foreach(data, value, genMeetingAdaptiveCardItems(value)), ',')}  ]
