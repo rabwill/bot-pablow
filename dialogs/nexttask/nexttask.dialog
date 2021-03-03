@@ -44,12 +44,12 @@
             "id": "N3ADLh"
           },
           "method": "GET",
-          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/tasks/tasks?$filter=dueDateTime/dateTime ge '${startOfDay(utcNow())}' and dueDateTime/dateTime lt '${startOfDay(getFutureTime(1, 'Day'))}'",
           "headers": {
             "Authorization": "Bearer ${dialog.auth.token}"
           },
           "responseType": "json",
-          "resultProperty": "dialog.tasks"
+          "resultProperty": "dialog.tasks",
+          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/tasks/tasks?$filter=dueDateTime/dateTime gt '${startOfDay(getPastTime(1, 'Day'))}' and dueDateTime/dateTime le '${startOfDay(utcNow())}'"
         },
         {
           "$kind": "Microsoft.SetProperty",
