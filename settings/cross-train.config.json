@@ -4,6 +4,9 @@
     "triggers": {
       "whatsup": [
         "whatsup.en-us"
+      ],
+      "nextmeeting": [
+        "nextmeeting.en-us"
       ]
     }
   }

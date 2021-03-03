@@ -111,6 +111,25 @@
           "dialog": "whatsup"
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "M5IhUO",
+        "name": "nextmeeting"
+      },
+      "intent": "nextmeeting",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "7tDmzi"
+          },
+          "activityProcessed": true,
+          "dialog": "nextmeeting",
+          "options": {}
+        }
+      ]
     }
   ],
   "generator": "bot-pablow.lg",

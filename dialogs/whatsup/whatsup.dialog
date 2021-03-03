@@ -35,7 +35,8 @@
           "text": "Please sign in to Microsoft 365 first",
           "property": "dialog.auth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",
-          "title": "Sign in to Microsoft 365"
+          "title": "Sign in to Microsoft 365",
+          "alwaysPrompt": false
         },
         {
           "$kind": "Microsoft.HttpRequest",

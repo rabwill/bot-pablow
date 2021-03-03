@@ -1,0 +1,92 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "AYp4qv",
+    "name": "nextmeeting",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "ak4Cxy"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "dNnCXb"
+          },
+          "activity": "${SendActivity_dNnCXb()}"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "QDviRT"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "graph-nextmeeting",
+          "text": "Please sign in to Graph",
+          "title": "Login",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_QDviRT()}",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "wj66fZ"
+          },
+          "method": "GET",
+          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$top=2&$orderby= Start/DateTime asc\",\"StartTime\",utcNow())",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}"
+          },
+          "resultProperty": "dialog.meeting",
+          "responseType": "json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "4gc7CN"
+          },
+          "condition": "=count(dialog.meeting.content.value)!=0",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "KwEpvE"
+              },
+              "activity": "${SendActivity_KwEpvE()}"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "KdAAYL"
+              },
+              "activity": "${SendActivity_KdAAYL()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "O9FDc1"
+              },
+              "activity": "${SendActivity_O9FDc1()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "nextmeeting.lg",
+  "recognizer": "nextmeeting.lu.qna",
+  "id": "nextmeeting"
+}
