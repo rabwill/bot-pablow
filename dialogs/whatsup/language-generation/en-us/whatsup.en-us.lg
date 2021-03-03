@@ -43,7 +43,9 @@
       "items": [
         {
           "type": "Image",
-          "url": "${item.resourceVisualization.previewImageUrl}"
+          "url": "${item.resourceVisualization.previewImageUrl}",
+          "horizontalAlignment": "Center",
+          "width": "95px"
         }
       ]
     },
@@ -60,7 +62,7 @@
         },
         {
           "type": "TextBlock",
-          "text": "${item.resourceVisualization.previewText}",
+          "text": "${replace(item.resourceVisualization.previewText, '\r\n', ' ')}",
           "wrap": true,
           "size": "Small",
           "isSubtle": true
@@ -77,7 +79,7 @@
             {
               "type": "Action.OpenUrl",
               "title": "View",
-              "style": "positive",
+              "style": "default",
               "url": "${item.resourceReference.webUrl}"
             }
           ],
