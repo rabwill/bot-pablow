@@ -79,17 +79,10 @@
                 "name": "Calcuate reminder datetime"
               },
               "property": "dialog.when",
-              "value": "=formatDateTime(dialog.whenTimex[0].Value)"
+              "value": "=formatDateTime(dialog.whenTimex[0].Value,'yyyy-MM-ddTHH:mm:ss.fffZx')"
             }
           ],
           "elseActions": [
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "zTlaWp"
-              },
-              "activity": "${SendActivity_zTlaWp()}"
-            },
             {
               "$kind": "Microsoft.SetProperties",
               "$designer": {
@@ -115,7 +108,7 @@
                 },
                 {
                   "property": "dialog.when",
-                  "value": "=formatDateTime(turn.value)"
+                  "value": "=formatDateTime(turn.value,'yyyy-MM-ddTHH:mm:ss.fffZx')"
                 }
               ]
             }
@@ -136,7 +129,8 @@
           "activityProcessed": true,
           "dialog": "remindme-addtask",
           "options": {
-            "taskName": "=dialog.taskName"
+            "taskName": "=dialog.taskName",
+            "reminderTime": "=dialog.when"
           }
         }
       ]

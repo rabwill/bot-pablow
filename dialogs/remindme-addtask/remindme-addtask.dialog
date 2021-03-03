@@ -17,12 +17,20 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SetProperty",
+          "$kind": "Microsoft.SetProperties",
           "$designer": {
-            "id": "FhnwjM"
+            "id": "7HUL8i"
           },
-          "property": "dialog.taskName",
-          "value": "=$taskName"
+          "assignments": [
+            {
+              "property": "dialog.taskName",
+              "value": "=$taskName"
+            },
+            {
+              "value": "=$reminderTime",
+              "property": "dialog.reminderTime"
+            }
+          ]
         },
         {
           "$kind": "Microsoft.OAuthInput",
@@ -88,13 +96,6 @@
                 }
               ],
               "itemsProperty": "dialog.getListsResult.content.value"
-            },
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "m2CCwT"
-              },
-              "activity": "${SendActivity_m2CCwT()}"
             }
           ],
           "elseActions": []
@@ -107,9 +108,15 @@
           },
           "method": "POST",
           "url": "https://graph.microsoft.com/v1.0/me/todo/lists/${user.taskListId}/tasks",
-          "body": "{ \"title\":\"${dialog.taskName}\" }",
           "headers": {
             "Authorization": "Bearer ${dialog.oauth.token}"
+          },
+          "body": {
+            "title": "${dialog.taskName}",
+            "reminderDateTime": {
+              "dateTime": "${substring(dialog.reminderTime,0,24)}",
+              "timeZone": "EST"
+            }
           }
         },
         {
