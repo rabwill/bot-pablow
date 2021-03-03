@@ -1,0 +1,128 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "vX4KfO",
+    "name": "remindme-addtask",
+    "description": "Adds a task to the user's ToDo"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "BjQFqr"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "FhnwjM"
+          },
+          "property": "dialog.taskName",
+          "value": "=$taskName"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "5MKwDu"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "TeamsAuthDemoAppConnection",
+          "text": "Please sign in",
+          "title": "Login",
+          "property": "dialog.oauth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_5MKwDu()}",
+          "defaultValueResponse": "${OAuthInput_DefaultValueResponse_5MKwDu()}"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "HQrpaZ",
+            "name": "If needed, get task list ID"
+          },
+          "condition": "=user.taskListId==null",
+          "actions": [
+            {
+              "$kind": "Microsoft.HttpRequest",
+              "$designer": {
+                "id": "72GvfQ"
+              },
+              "method": "GET",
+              "url": "https://graph.microsoft.com/v1.0/me/todo/lists",
+              "headers": {
+                "Authorization": "Bearer ${dialog.oauth.token}"
+              },
+              "resultProperty": "dialog.getListsResult",
+              "contentType": "application/json",
+              "responseType": "json"
+            },
+            {
+              "$kind": "Microsoft.Foreach",
+              "$designer": {
+                "id": "rYAgDx"
+              },
+              "index": "dialog.foreach.index",
+              "value": "dialog.foreach.value",
+              "actions": [
+                {
+                  "$kind": "Microsoft.IfCondition",
+                  "$designer": {
+                    "id": "3gmwiN"
+                  },
+                  "condition": "=dialog.foreach.value.displayName=='Pablow Reminders'",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SetProperty",
+                      "$designer": {
+                        "id": "BfMk6S"
+                      },
+                      "property": "user.taskListId",
+                      "value": "=dialog.foreach.value.id"
+                    }
+                  ]
+                }
+              ],
+              "itemsProperty": "dialog.getListsResult.content.value"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "m2CCwT"
+              },
+              "activity": "${SendActivity_m2CCwT()}"
+            }
+          ],
+          "elseActions": []
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "e5Wwtn",
+            "name": "Create task"
+          },
+          "method": "POST",
+          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/${user.taskListId}/tasks",
+          "body": "{ \"title\":\"${dialog.taskName}\" }",
+          "headers": {
+            "Authorization": "Bearer ${dialog.oauth.token}"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "K2pYaw"
+          },
+          "activity": "${SendActivity_K2pYaw()}"
+        }
+      ]
+    }
+  ],
+  "generator": "remindme-addtask.lg",
+  "recognizer": "remindme-addtask.lu.qna",
+  "id": "remindme-addtask"
+}

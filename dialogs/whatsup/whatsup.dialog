@@ -31,7 +31,7 @@
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph-whatsup",
+          "connectionName": "TeamsAuthDemoAppConnection",
           "text": "Please sign in to Microsoft 365 first",
           "property": "dialog.auth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",
@@ -53,60 +53,11 @@
         {
           "$kind": "Microsoft.Foreach",
           "$designer": {
-            "id": "I13ty2"
+            "id": "9crMh2"
           },
           "index": "dialog.foreach.index",
           "value": "dialog.foreach.value",
-          "itemsProperty": "dialog.whatsup.content.value",
-          "actions": [
-            {
-              "$kind": "Microsoft.SetProperty",
-              "$designer": {
-                "id": "NRX6Pm"
-              },
-              "property": "dialog.imageUrl",
-              "value": "=replace('https://graph.microsoft.com/v1.0/'+substring(dialog.foreach.value.resourceVisualization.previewImageUrl, indexOf(dialog.foreach.value.resourceVisualization.previewImageUrl, '/_api/v2.0/')+11), '/thumbnailContent', '')"
-            },
-            {
-              "$kind": "Microsoft.LogAction",
-              "$designer": {
-                "id": "Rv3tYc"
-              },
-              "text": "Retrieving ${dialog.imageUrl}....",
-              "label": "Retrieving ${dialog.imageUrl}....",
-              "traceActivity": true
-            },
-            {
-              "$kind": "Microsoft.HttpRequest",
-              "$designer": {
-                "id": "Muarc7"
-              },
-              "method": "GET",
-              "url": "${dialog.imageUrl}",
-              "headers": {
-                "Authorization": "Bearer ${dialog.auth.token}"
-              },
-              "resultProperty": "dialog.imageUrl",
-              "responseType": "json"
-            },
-            {
-              "$kind": "Microsoft.SetProperty",
-              "$designer": {
-                "id": "7VYJbg"
-              },
-              "property": "dialog.whatsup.content.value[dialog.foreach.index].resourceVisualization.previewImageUrl",
-              "value": "=dialog.imageUrl.content.url"
-            }
-          ]
-        },
-        {
-          "$kind": "Microsoft.LogAction",
-          "$designer": {
-            "id": "HHnEJ9"
-          },
-          "text": "${dialog.whatsup.content.value}",
-          "traceActivity": true,
-          "label": "Retrieved data"
+          "itemsProperty": "dialog.whatsup.content.value"
         },
         {
           "$kind": "Microsoft.SendActivity",

@@ -1,0 +1,64 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "7hEafH",
+    "name": "remindme",
+    "description": "Add a reminder"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "1pIgIK"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "jP4oeD"
+          },
+          "assignments": [
+            {
+              "property": "dialog.taskName",
+              "value": "=@taskName"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "et7p7z",
+            "name": "Prompt for task name"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "prompt": "${TextInput_Prompt_et7p7z()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "property": "dialog.taskName"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "CYYyak"
+          },
+          "activityProcessed": true,
+          "dialog": "remindme-addtask",
+          "options": {
+            "taskName": "=dialog.taskName"
+          }
+        }
+      ]
+    }
+  ],
+  "generator": "remindme.lg",
+  "recognizer": "remindme.lu.qna",
+  "id": "remindme"
+}

@@ -65,32 +65,18 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.Foreach",
+          "$kind": "Microsoft.SendActivity",
           "$designer": {
-            "id": "518944",
-            "name": "Loop: for each item"
+            "id": "incZIp"
           },
-          "itemsProperty": "turn.Activity.membersAdded",
-          "actions": [
-            {
-              "$kind": "Microsoft.IfCondition",
-              "$designer": {
-                "id": "641773",
-                "name": "Branch: if/else"
-              },
-              "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
-              "actions": [
-                {
-                  "$kind": "Microsoft.SendActivity",
-                  "$designer": {
-                    "id": "859266",
-                    "name": "Send a response"
-                  },
-                  "activity": "${SendActivity_Welcome()}"
-                }
-              ]
-            }
-          ]
+          "activity": "${SendActivity_incZIp()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "v8Np0L"
+          },
+          "activity": "${SendActivity_v8Np0L()}"
         }
       ]
     },
@@ -109,6 +95,24 @@
           },
           "activityProcessed": true,
           "dialog": "whatsup"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "Xq9CKa",
+        "name": "remindme"
+      },
+      "intent": "remindme",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "9XTydX"
+          },
+          "activityProcessed": true,
+          "dialog": "remindme"
         }
       ]
     }

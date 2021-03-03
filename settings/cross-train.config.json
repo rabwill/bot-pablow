@@ -4,6 +4,9 @@
     "triggers": {
       "whatsup": [
         "whatsup.en-us"
+      ],
+      "remindme": [
+        "remindme.en-us"
       ]
     }
   }

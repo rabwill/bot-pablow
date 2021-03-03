@@ -16,7 +16,17 @@
 - what's happening around me
 
 
+# remindme
+- Remind me to {@taskName=buy groceries}
+- Please remind me to {@taskName=blog about bots}
+- Set a reminder to {@taskName=breathe}
+- I have to remember to {@taskName=take a walk}
+- Remind me to {@taskName=calculate pi to 100 digits}
+
+
 > # Entity definitions
+
+@ ml taskName
 
 
 > # PREBUILT Entity definitions
