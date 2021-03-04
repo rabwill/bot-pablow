@@ -1,8 +1,10 @@
 [import](common.lg)
 
-# SendActivity_Welcome
-- ${WelcomeUser()}
-
+# SendActivity_Welcome()
+[Activity
+    Text = 🤖Howdy? What can I do for you?
+    SuggestedActions = What's next? | What's up? | Remind me to
+]
 # SendActivity_003038
 - You said '${turn.activity.text}'
 
