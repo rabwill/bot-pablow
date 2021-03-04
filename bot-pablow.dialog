@@ -142,7 +142,7 @@
         {
           "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "hkZppB"
+            "id": "RqPmlV"
           },
           "activityProcessed": true,
           "dialog": "nextmeeting"
@@ -196,6 +196,32 @@
           "options": {
             "filter": "today"
           }
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "1qhOWK",
+        "name": "taskcomplete"
+      },
+      "intent": "taskcomplete",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "629ajp"
+          },
+          "activity": "${SendActivity_629ajp()}"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "Rru89s"
+          },
+          "activityProcessed": true,
+          "dialog": "completeTask",
+          "options": {}
         }
       ]
     }
