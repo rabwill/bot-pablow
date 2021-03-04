@@ -101,6 +101,49 @@
           "elseActions": []
         },
         {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "kXOoaQ",
+            "name": "If still need list ID, create the list"
+          },
+          "condition": "=user.taskListId==null",
+          "actions": [
+            {
+              "$kind": "Microsoft.HttpRequest",
+              "$designer": {
+                "id": "1xL8Fl",
+                "name": "Create Pablow Reminders list"
+              },
+              "method": "POST",
+              "url": "https://graph.microsoft.com/v1.0/me/todo/lists",
+              "body": {
+                "displayName": "Pablow Reminders"
+              },
+              "headers": {
+                "Authorization": "Bearer ${dialog.oauth.token}"
+              },
+              "resultProperty": "turn.createListResponse",
+              "contentType": "application/json",
+              "responseType": "json"
+            },
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "r3ACit"
+              },
+              "property": "user.taskListId",
+              "value": "=turn.createListResponse.id"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "3gmIcc"
+              },
+              "activity": "${SendActivity_3gmIcc()}"
+            }
+          ]
+        },
+        {
           "$kind": "Microsoft.HttpRequest",
           "$designer": {
             "id": "e5Wwtn",
