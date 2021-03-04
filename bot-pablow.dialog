@@ -15,46 +15,20 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SendActivity",
+          "$kind": "Microsoft.QnAMakerDialog",
           "$designer": {
-            "id": "003038"
+            "id": "J3YO2N"
           },
-          "activity": "${SendActivity_003038()}"
-        },
-        {
-          "$kind": "Microsoft.OAuthInput",
-          "$designer": {
-            "id": "hYFwxs"
-          },
-          "timeout": 900000,
-          "maxTurnCount": 3,
-          "allowInterruptions": true,
-          "connectionName": "pablo-graph-connection",
-          "text": "Please sign in to Microsoft Graph",
-          "title": "Login",
-          "property": "dialog.auth",
-          "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}"
-        },
-        {
-          "$kind": "Microsoft.HttpRequest",
-          "$designer": {
-            "id": "nkujwU"
-          },
-          "method": "GET",
-          "url": "https://graph.microsoft.com/v1.0/me",
-          "headers": {
-            "Authorization": "Bearer ${dialog.auth.token}"
-          },
-          "resultProperty": "dialog.me",
-          "contentType": "application/json",
-          "responseType": "json"
-        },
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "946u1H"
-          },
-          "activity": "${SendActivity_946u1H()}"
+          "knowledgeBaseId": "=settings.qna.knowledgebaseid",
+          "endpointKey": "=settings.qna.endpointkey",
+          "hostname": "=settings.qna.hostname",
+          "noAnswer": "Sorry, I did not find an answer.",
+          "threshold": 0.3,
+          "activeLearningCardTitle": "Did you mean:",
+          "cardNoMatchText": "None of the above.",
+          "cardNoMatchResponse": "Thanks for the feedback.",
+          "top": 3,
+          "isTest": false
         }
       ]
     },

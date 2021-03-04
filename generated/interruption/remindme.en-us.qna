@@ -1,0 +1,23 @@
+
+> Source: cross training. Please do not edit these directly!
+> !# @qna.pair.source = crosstrained
+
+# ? 9am tomorrow
+- tomorrow at 9:00
+- tomorrow at 9
+- March 2nd at 9 am
+- what's up
+- whats up
+- whatsup
+- what's going on
+- what are others doing
+- what's happening around me
+- I'm late
+- How are you
+
+**Filters:**
+- dialogName=remindme
+
+```
+intent=DeferToRecognizer_LUIS_remindme
+```

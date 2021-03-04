@@ -1,0 +1,43 @@
+# ? I'm late
+
+**Filters:**
+- dialogName=bot-pablow
+
+```
+Time is only a perception
+```
+
+# ? How are you
+
+**Filters:**
+- dialogName=bot-pablow
+
+```
+Fine
+```
+
+> Source: cross training. Please do not edit these directly!
+> !# @qna.pair.source = crosstrained
+
+# ? what's up
+- whats up
+- whatsup
+- what's going on
+- what are others doing
+- what's happening around me
+- Remind me to buy groceries
+- Please remind me to blog about bots
+- Set a reminder to breathe
+- I have to remember to take a walk
+- Remind me to calculate pi to 100 digits
+- Remind me to walk the dog in 1 hour
+- I need to think at 2 tomorrow
+- Remember I should write some code thursday at noon
+- Remind me to brush the cat tomorrow at 2
+
+**Filters:**
+- dialogName=bot-pablow
+
+```
+intent=DeferToRecognizer_LUIS_bot-pablow
+```

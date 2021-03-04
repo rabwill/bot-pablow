@@ -1,0 +1,7 @@
+{
+    "qna": {
+        "bot_pablow_en_us_qna": "5210683f-4e8c-4592-8dc5-c8aa4d8f4468",
+        "hostname": "https://qna-dev18.azurewebsites.net/qnamaker",
+        "remindme_en_us_qna": "5210683f-4e8c-4592-8dc5-c8aa4d8f4468"
+    }
+}
