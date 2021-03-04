@@ -28,6 +28,15 @@
 - Remind me to {@taskName=brush the cat} {@datetimev2.when=tomorrow at 2}
 
 
+# cancel
+- cancel
+- stop
+- quit
+- never mind
+- cut it out
+- abort
+
+
 > # Entity definitions
 
 @ ml taskName

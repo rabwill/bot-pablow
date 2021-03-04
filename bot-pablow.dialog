@@ -82,6 +82,30 @@
           "dialog": "remindme"
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "4QGKPQ",
+        "name": "cancel"
+      },
+      "intent": "cancel",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "Y0HsPZ"
+          },
+          "activity": "${SendActivity_Y0HsPZ()}"
+        },
+        {
+          "$kind": "Microsoft.CancelAllDialogs",
+          "$designer": {
+            "id": "nvXm5G"
+          },
+          "activityProcessed": true
+        }
+      ]
     }
   ],
   "generator": "bot-pablow.lg",
