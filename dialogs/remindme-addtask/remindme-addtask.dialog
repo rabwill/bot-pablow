@@ -114,7 +114,7 @@
           "body": {
             "title": "${dialog.taskName}",
             "reminderDateTime": {
-              "dateTime": "${substring(dialog.reminderTime,0,24)}",
+              "dateTime": "${formatDateTime(dialog.reminderTime,'yyyy-MM-ddTHH:mm:ss.fffZ')}",
               "timeZone": "EST"
             }
           }

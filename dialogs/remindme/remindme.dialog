@@ -79,7 +79,7 @@
                 "name": "Calcuate reminder datetime"
               },
               "property": "dialog.when",
-              "value": "=formatDateTime(dialog.whenTimex[0].Value,'yyyy-MM-ddTHH:mm:ss.fffZx')"
+              "value": "=dialog.whenTimex[0].Value"
             }
           ],
           "elseActions": [
@@ -103,12 +103,8 @@
                   "value": "=substring(split(turn.timex,\"T\")[1]&\":00:00\",0,5)"
                 },
                 {
-                  "property": "turn.value",
-                  "value": "=turn.timexDate&' '&turn.timexTime"
-                },
-                {
                   "property": "dialog.when",
-                  "value": "=formatDateTime(turn.value,'yyyy-MM-ddTHH:mm:ss.fffZx')"
+                  "value": "=turn.timexDate&' '&turn.timexTime"
                 }
               ]
             }

@@ -9,6 +9,6 @@
 # OAuthInput_DefaultValueResponse_H6zZ2k()
 - Login complete
 # SendActivity_j8LLmz()
-- Adding a task to ${dialog.taskName} at ${substring(dialog.when,0,24)}
+- Adding a task to ${dialog.taskName} at ${dialog.when}
 # DateTimeInput_Prompt_EhCO9D()
 - When do you want me to remind you?
