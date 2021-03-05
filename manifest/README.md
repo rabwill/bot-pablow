@@ -1,14 +1,6 @@
-This code will build the Teams manifest for Pablow, pulling the Bot ID from Bot Composer automatically.
+This folder contains a PowerShell script to build he Teams application package manifest for Pablow. The manifest is based on the contents of `manifest.template.json` and the Bot ID is read from Bot Composer settings.
 
-To use it, ensure the Bot ID is set correctly in Bot Composer and that NodeJS is installed. First time, run (within this folder):
-
-~~~
-npm install
+~~~powershell
+./Build-Manifest
 ~~~
 
-Make any modifications to manifest.template.json.
-To build the manifest run: 
-
-~~~
-npm run build
-~~~
