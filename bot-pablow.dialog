@@ -127,7 +127,7 @@
           "activityProcessed": true
         }
       ]
-    }
+    },
     {
       "$kind": "Microsoft.OnIntent",
       "$designer": {
@@ -170,48 +170,6 @@
           },
           "activityProcessed": true,
           "dialog": "nexttask"
-        }
-      ]
-    },
-    {
-      "$kind": "Microsoft.OnIntent",
-      "$designer": {
-        "id": "l82sNN",
-        "name": "meetingstomorrow"
-      },
-      "intent": "meetingstomorrow",
-      "actions": [
-        {
-          "$kind": "Microsoft.BeginDialog",
-          "$designer": {
-            "id": "lTQPXB"
-          },
-          "activityProcessed": true,
-          "dialog": "getMeetings",
-          "options": {
-            "filter": "tomorrow"
-          }
-        }
-      ]
-    },
-    {
-      "$kind": "Microsoft.OnIntent",
-      "$designer": {
-        "id": "sizcLb",
-        "name": "meetingstoday"
-      },
-      "intent": "meetingstoday",
-      "actions": [
-        {
-          "$kind": "Microsoft.BeginDialog",
-          "$designer": {
-            "id": "x7KC1M"
-          },
-          "activityProcessed": true,
-          "dialog": "getMeetings",
-          "options": {
-            "filter": "today"
-          }
         }
       ]
     },

@@ -33,7 +33,7 @@
           "maxTurnCount": 3,
           "allowInterruptions": true,
           "connectionName": "graph",
-          "text": "Please sign in to Graph",
+          "text": "Please sign in to Microsoft 365 first",
           "title": "Login",
           "property": "dialog.auth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_QDviRT()}",

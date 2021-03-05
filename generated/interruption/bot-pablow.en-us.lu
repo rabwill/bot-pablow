@@ -33,16 +33,9 @@
 - what should i do next
 
 
-# meetingstomorrow
-- meetings tomorrow
-
-
-# meetingstoday
-- meetings today
-
-
 # taskcomplete
 - bloop: {@taskTitle=test this now} and taskId {@taskId=AAMkADMzZGRhOGE2LTk3OTQtNGVjZC1hYTZjLWM3M2I3NDgyNTg2ZgBGAAAAAACOKrX6nAGxSbfScl8PiCZxBwBQe9skgdrpRZRWh-kdFks4AAAAAAESAABQe9skgdrpRZRWh-kdFks4AABytbaoAAA*}
+
 
 # remindme
 - Remind me to {@taskName=buy groceries}
@@ -67,13 +60,13 @@
 
 > # Entity definitions
 
+@ ml taskName
+
 @ ml meetingCount
 
 @ ml taskTitle
 
 @ ml taskId
-
-@ ml taskName
 
 @ ml datetimev2.when
 
@@ -89,6 +82,8 @@
 > # List entities
 
 > # RegEx entities
+
+
 
 
 > Source: cross training. Please do not edit these directly!

@@ -41,7 +41,7 @@
           "maxTurnCount": 3,
           "allowInterruptions": true,
           "connectionName": "=settings.oauthConnectionName",
-          "text": "Please sign in",
+          "text": "Please sign in to Microsoft 365 first",
           "title": "Login",
           "property": "dialog.oauth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_5MKwDu()}",

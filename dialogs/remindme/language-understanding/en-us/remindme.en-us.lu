@@ -12,3 +12,13 @@
 >
 > entity definitions:
 > @ ml itemTitle
+
+
+# TextInput_Response_et7p7z
+> add some expected user responses:
+> - Please remind me to {itemTitle=buy milk}
+> - remind me to {itemTitle}
+> - add {itemTitle} to my todo list
+>
+> entity definitions:
+> @ ml itemTitle

@@ -6,21 +6,9 @@
     SuggestedActions = What's next? | What's up? | Remind me to
 ]
 
-# SendActivity_003038
-- You said '${turn.activity.text}'
-
-# OAuthInput_InvalidPrompt_hYFwxs()
-- Sorry something went wrong
-# SendActivity_946u1H()
-- - Hello there, ${dialog.me.content.displayName}
-# SendActivity_1OIFvz()
-- I recieved your message
 # SendActivity_629ajp()
 - Roger that 🐱‍👤
-# SendActivity_incZIp()
-- Hi I'm **Pab**lo your Personal Assistant Bot
-
 # SendActivity_Y0HsPZ()
 - OK never mind
-- No ptoblem, is there anything else I can do for you?
+- No problem, is there anything else I can do for you?
 - Alright let's start over

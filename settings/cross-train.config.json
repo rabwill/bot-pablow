@@ -5,6 +5,10 @@
       "whatsup": [
         "whatsup.en-us"
       ],
+      "remindme": [
+        "remindme.en-us"
+      ],
+      "cancel": [],
       "nextmeeting": [
         "nextmeeting.en-us"
       ],
@@ -12,19 +16,9 @@
         "nextmeeting.en-us",
         "nexttask.en-us"
       ],
-      "meetingstomorrow": [
-        "getMeetings.en-us"
-      ],
-      "meetingstoday": [
-        "getMeetings.en-us"
-      ],
       "taskcomplete": [
         "completeTask.en-us"
-      ],
-      "remindme": [
-        "remindme.en-us"
-      ],
-      "cancel": []
+      ]
     }
   },
   "remindme.en-us": {
