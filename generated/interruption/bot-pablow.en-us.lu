@@ -44,6 +44,26 @@
 # taskcomplete
 - bloop: {@taskTitle=test this now} and taskId {@taskId=AAMkADMzZGRhOGE2LTk3OTQtNGVjZC1hYTZjLWM3M2I3NDgyNTg2ZgBGAAAAAACOKrX6nAGxSbfScl8PiCZxBwBQe9skgdrpRZRWh-kdFks4AAAAAAESAABQe9skgdrpRZRWh-kdFks4AABytbaoAAA*}
 
+# remindme
+- Remind me to {@taskName=buy groceries}
+- Please remind me to {@taskName=blog about bots}
+- Set a reminder to {@taskName=breathe}
+- I have to remember to {@taskName=take a walk}
+- Remind me to {@taskName=calculate pi to 100 digits}
+- Remind me to {@taskName=walk the dog} in {@when=1 hour}
+- I need to {@taskName=think} at {@when=2 tomorrow}
+- Remember I should {@taskName=write some code} {@when=thursday at noon}
+- Remind me to {@taskName=brush the cat} {@datetimev2.when=tomorrow at 2}
+
+
+# cancel
+- cancel
+- stop
+- quit
+- never mind
+- cut it out
+- abort
+
 
 > # Entity definitions
 
@@ -53,8 +73,14 @@
 
 @ ml taskId
 
+@ ml taskName
+
+@ ml datetimev2.when
+
 
 > # PREBUILT Entity definitions
+
+@ prebuilt datetimeV2 hasRole when
 
 
 > # Phrase list definitions
@@ -65,3 +91,7 @@
 > # RegEx entities
 
 
+> Source: cross training. Please do not edit these directly!
+# DeferToRecognizer_QnA_bot-pablow
+- I'm late
+- How are you

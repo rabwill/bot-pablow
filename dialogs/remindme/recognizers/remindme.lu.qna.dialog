@@ -1,7 +1,6 @@
 {
   "$kind": "Microsoft.CrossTrainedRecognizerSet",
   "recognizers": [
-    "bot-pablow.lu",
-    "bot-pablow.qna"
+    "remindme.lu"
   ]
 }

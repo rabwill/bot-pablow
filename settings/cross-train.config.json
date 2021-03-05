@@ -20,6 +20,18 @@
       ],
       "taskcomplete": [
         "completeTask.en-us"
+      ],
+      "remindme": [
+        "remindme.en-us"
+      ],
+      "cancel": []
+    }
+  },
+  "remindme.en-us": {
+    "rootDialog": false,
+    "triggers": {
+      "": [
+        "remindme-addtask.en-us"
       ]
     }
   }
