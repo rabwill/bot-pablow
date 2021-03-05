@@ -1,10 +1,11 @@
 [import](common.lg)
 
-# SendActivity_Welcome()
+# SendActivity_Welcome
 [Activity
     Text = 🤖Howdy? What can I do for you?
     SuggestedActions = What's next? | What's up? | Remind me to
 ]
+
 # SendActivity_003038
 - You said '${turn.activity.text}'
 
@@ -12,3 +13,7 @@
 - Sorry something went wrong
 # SendActivity_946u1H()
 - - Hello there, ${dialog.me.content.displayName}
+# SendActivity_1OIFvz()
+- I recieved your message
+# SendActivity_629ajp()
+- Roger that 🐱‍👤

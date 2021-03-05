@@ -17,6 +17,9 @@
       ],
       "meetingstoday": [
         "getMeetings.en-us"
+      ],
+      "taskcomplete": [
+        "completeTask.en-us"
       ]
     }
   }

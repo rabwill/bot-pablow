@@ -10,88 +10,114 @@
 # SendActivity_lWtdQu()
 -Here are your tasks for today
 # SendActivity_vAuJJH()
--${TasksAdaptiveCard()}
+-${TasksAdaptiveCard(dialog.tasks.content.value)}
 # SendActivity_ua386v()
 -No tasks for today! 💪
-# TasksAdaptiveCard()
+# TasksAdaptiveCard(response)
 [Activity
-  Attachments = ${json(getTasksAdaptiveCard(dialog.tasks.content.value))}
+  Attachments = ${json(getTasksAdaptiveCard(response))}
 ]
-# getTasksAdaptiveCard(tasks)
+#getTasksAdaptiveCard(data)
 -```
 {
     "type": "AdaptiveCard",
     "body": [
-        {
-            "type": "TextBlock",
-            "size": "Medium",
-            "weight": "Bolder",
-            "text": "Tasks for today"
-        },
+           {
+                    "type": "ColumnSet",
+                    "style": "emphasis",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "You tasks due today",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch",
+                            "padding": "None"
+                        }
+                       
+                    ],
+                    "padding": "Default",
+                    "spacing": "None"
+                },
         {
             "type": "Container",
-            "items": [
-                ${join(foreach(tasks, value, genAdaptiveCardTasks(value)), ',')}
-            ]
+            "items": [ ${join(foreach(data, value, getTasksAdaptiveCardItem(value)), ',')}  ]
         }
     ],
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "version": "1.2"
 }
 ```
-#genAdaptiveCardTasks(item)
+# getTasksAdaptiveCardItem(item)
 -```
+ {
+      "type": "ColumnSet",
+      "columns": [
+ {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "**${item.title}**",
+              "wrap": true
+            },
+           
 {
-    "columns": [
-    {
-        "items": [
+    "type": "ColumnSet",
+    "columns": [    
+     
+      
         {
-            "text": "${item.title}",
-            "type": "TextBlock",
-            "wrap": true
-        }
-        ],
-        "type": "Column",
-        "width": "stretch"
-    },
-    {
-        "backgroundImage": {},
-        "horizontalAlignment": "Right",
-        "items": [
+            "type": "Column",
+            "width": "auto",
+            "items": [
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                            "type": "Action.OpenUrl",
+                            "title": "Go to task",
+                            "style": "positive",
+                            "url": "https://to-do.office.com/tasks/id/${item.id}/details"
+                        }
+                    ],
+                    "horizontalAlignment": "Right"
+                }
+                
+            ]
+        },
         {
-            "actions": [
-            {
-                "style": "positive",
-                "title": "✓",
-                "type": "Action.OpenUrl",
-                "url": "#"
-            }
-            ],
-            "spacing": "Small",
-            "type": "ActionSet",
-            "height": "stretch"
-        }
-        ],
-        "type": "Column",
-        "width": "auto"
-    },
-    {
-        "type": "Column",
-        "width": "auto",
-        "items": [
-        {
-            "type": "ActionSet",
-            "actions": [
-            {
-                "title": "View",
-                "type": "Action.OpenUrl",
-                "url": "https://to-do.office.com/tasks/id/${item.id}/details"
-            }
+            "type": "Column",
+            "width": "auto",
+            "items": [
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                           "type": "Action.Submit",
+  "title": "Complete task",
+  "data": {
+    "msteams": {
+        "type": "messageBack",
+        "displayText": "Complete task : ${item.title}",
+        "text":  "bloop: ${item.title} and taskId ${item.id}",
+        "value": "task id is ${item.id} and title is ${item.title}"
+    }
+  }
+                        }
+                    ],
+                    "horizontalAlignment": "Right"
+                }
+                
             ]
         }
-        ]
-    }
-    ],
-    "type": "ColumnSet"
-}
+    ]
+} 
+  ],
+          "width": 40
+        }]}
 ```

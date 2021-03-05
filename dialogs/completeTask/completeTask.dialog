@@ -1,0 +1,75 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "Kodw4a",
+    "name": "completeTask",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "X0924N"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "LzFdpO"
+          },
+          "property": "dialog.taskId",
+          "value": "=coalesce(@taskId, $taskId)"
+        },
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "rINB74"
+          },
+          "property": "dialog.taskTitle",
+          "value": "=coalesce(@taskTitle, $taskTitle)"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "CoakD9"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "text": "Please sign in to Microsoft 365 first",
+          "connectionName": "graph",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_CoakD9()}",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "K1rhVn"
+          },
+          "method": "PATCH",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}"
+          },
+          "contentType": "application/json",
+          "body": "{\"status\":\"completed\"}",
+          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/tasks/tasks/${dialog.taskId}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "IPjI6k"
+          },
+          "activity": "${SendActivity_IPjI6k()}"
+        }
+      ]
+    }
+  ],
+  "generator": "completeTask.lg",
+  "recognizer": "completeTask.lu.qna",
+  "id": "completeTask"
+}

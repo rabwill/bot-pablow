@@ -45,12 +45,13 @@
             "id": "wj66fZ"
           },
           "method": "GET",
-          "url": "= replace(\"https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge 'StartTime'&$orderby= Start/DateTime asc\",\"StartTime\",utcNow())",
           "headers": {
-            "Authorization": "Bearer ${dialog.auth.token}"
+            "Authorization": "Bearer ${dialog.auth.token}",
+            "Prefer": "outlook.timezone=\"E. Australia Standard Time\""
           },
           "resultProperty": "dialog.meeting",
-          "responseType": "json"
+          "responseType": "json",
+          "url": "https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge '${utcNow()}'&$orderby= Start/DateTime asc"
         },
         {
           "$kind": "Microsoft.IfCondition",
