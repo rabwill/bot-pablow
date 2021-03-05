@@ -198,6 +198,31 @@
           "options": {}
         }
       ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "n66Lgz",
+        "name": "logOff"
+      },
+      "intent": "logOff",
+      "actions": [
+        {
+          "$kind": "Microsoft.SignOutUser",
+          "$designer": {
+            "id": "hDJahn"
+          },
+          "userId": "=user.id",
+          "connectionName": "=settings.oauthConnectionName"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "2O4dzb"
+          },
+          "activity": "${SendActivity_2O4dzb()}"
+        }
+      ]
     }
   ],
   "generator": "bot-pablow.lg",
