@@ -32,7 +32,7 @@
           "timeout": 900000,
           "maxTurnCount": 3,
           "allowInterruptions": true,
-          "connectionName": "graph",
+          "connectionName": "=settings.oauthConnectionName",
           "text": "Please sign in to Microsoft 365 first",
           "title": "Login",
           "property": "dialog.auth",

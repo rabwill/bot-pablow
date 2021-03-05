@@ -41,7 +41,7 @@
           "maxTurnCount": 3,
           "allowInterruptions": true,
           "text": "Please sign in to Microsoft 365 first",
-          "connectionName": "graph",
+          "connectionName": "=settings.oauthConnectionName",
           "property": "dialog.auth",
           "invalidPrompt": "${OAuthInput_InvalidPrompt_CoakD9()}",
           "alwaysPrompt": false
