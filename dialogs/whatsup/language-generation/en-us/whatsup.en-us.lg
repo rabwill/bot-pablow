@@ -41,18 +41,6 @@
   "columns": [
     {
       "type": "Column",
-      "width": "auto",
-      "items": [
-        {
-          "type": "Image",
-          "url": "${item.resourceVisualization.previewImageUrl}",
-          "horizontalAlignment": "Center",
-          "width": "95px"
-        }
-      ]
-    },
-    {
-      "type": "Column",
       "width": "stretch",
       "items": [
         {

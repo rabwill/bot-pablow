@@ -8,7 +8,6 @@
       "remindme": [
         "remindme.en-us"
       ],
-      "cancel": [],
       "nextmeeting": [
         "nextmeeting.en-us"
       ],
@@ -19,7 +18,8 @@
       "taskcomplete": [
         "completeTask.en-us"
       ],
-      "logOff": []
+      "logOff": [],
+      "hello": []
     }
   },
   "remindme.en-us": {

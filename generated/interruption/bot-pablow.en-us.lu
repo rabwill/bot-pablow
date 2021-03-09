@@ -49,26 +49,16 @@
 - Remind me to {@taskName=brush the cat} {@datetimev2.when=tomorrow at 2}
 
 
-# cancel
-- cancel
-- stop
-- quit
-- never mind
-- cut it out
-- abort
-
-
 # logOff
-- sign off
-- log off
-- sign out
-- log out
 - signoff
 - logoff
-- bye
-- goodbye
-- logout
-- signout
+
+
+# hello
+- hello
+- hi
+- howdy
+- greetings
 
 
 > # Entity definitions

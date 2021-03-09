@@ -107,30 +107,6 @@
     {
       "$kind": "Microsoft.OnIntent",
       "$designer": {
-        "id": "4QGKPQ",
-        "name": "cancel"
-      },
-      "intent": "cancel",
-      "actions": [
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "Y0HsPZ"
-          },
-          "activity": "${SendActivity_Y0HsPZ()}"
-        },
-        {
-          "$kind": "Microsoft.CancelAllDialogs",
-          "$designer": {
-            "id": "nvXm5G"
-          },
-          "activityProcessed": true
-        }
-      ]
-    },
-    {
-      "$kind": "Microsoft.OnIntent",
-      "$designer": {
         "id": "M5IhUO",
         "name": "nextmeeting"
       },
@@ -221,6 +197,32 @@
             "id": "2O4dzb"
           },
           "activity": "${SendActivity_2O4dzb()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "NJK6In",
+        "name": "hello"
+      },
+      "intent": "hello",
+      "actions": [
+        {
+          "$kind": "Microsoft.QnAMakerDialog",
+          "$designer": {
+            "id": "kGKTwG"
+          },
+          "knowledgeBaseId": "=settings.qna.knowledgebaseid",
+          "endpointKey": "=settings.qna.endpointkey",
+          "hostname": "=settings.qna.hostname",
+          "noAnswer": "Sorry, I did not find an answer.",
+          "threshold": 0.3,
+          "activeLearningCardTitle": "Did you mean:",
+          "cardNoMatchText": "None of the above.",
+          "cardNoMatchResponse": "Thanks for the feedback.",
+          "top": 3,
+          "isTest": false
         }
       ]
     }
