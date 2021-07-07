@@ -1,12 +1,10 @@
 {
     "luis": {
         "bot_pablow_en_us_lu": {
-            "appId": "307049b9-2cde-4a58-8b7e-c2bbc54f4e1a",
-            "version": "2.3"
+            "appId": "307049b9-2cde-4a58-8b7e-c2bbc54f4e1a"
         },
         "remindme_en_us_lu": {
-            "appId": "e0d1bdcf-4a80-4967-9ccd-652e3461bc9f",
-            "version": "0.8"
+            "appId": "e0d1bdcf-4a80-4967-9ccd-652e3461bc9f"
         }
     }
 }
