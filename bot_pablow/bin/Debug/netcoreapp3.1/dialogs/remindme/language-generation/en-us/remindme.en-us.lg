@@ -1,0 +1,14 @@
+[import](common.lg)
+
+# TextInput_Prompt_et7p7z()
+- What do you want to remember to do?
+- What shall I remind you to do?
+- Sure what's the reminder?
+# OAuthInput_InvalidPrompt_H6zZ2k()
+- Sorry that didn't work
+# OAuthInput_DefaultValueResponse_H6zZ2k()
+- Login complete
+# SendActivity_j8LLmz()
+- Adding a task to ${dialog.taskName} at ${dialog.when}
+# DateTimeInput_Prompt_EhCO9D()
+- When do you want me to remind you?

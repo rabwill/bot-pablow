@@ -1,0 +1,8 @@
+{
+  "$kind": "Microsoft.LuisRecognizer",
+  "id": "LUIS_bot_pablow",
+  "applicationId": "=settings.luis.bot_pablow_en_us_lu.appId",
+  "version": "=settings.luis.bot_pablow_en_us_lu.version",
+  "endpoint": "=settings.luis.endpoint",
+  "endpointKey": "=settings.luis.endpointKey"
+}

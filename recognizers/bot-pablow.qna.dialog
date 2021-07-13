@@ -1,8 +1,0 @@
-{
-  "$kind": "Microsoft.MultiLanguageRecognizer",
-  "id": "QnA_bot-pablow",
-  "recognizers": {
-    "en-us": "bot-pablow.en-us.qna",
-    "": "bot-pablow.en-us.qna"
-  }
-}

@@ -1,0 +1,16 @@
+[import](common.lg)
+
+# SendActivity_Welcome
+[Activity
+    Text = 🤖Howdy? What can I do for you?
+    SuggestedActions = What's next? | What's up? | Remind me to
+]
+
+# SendActivity_629ajp()
+- Roger that 🐱‍👤
+# SendActivity_Y0HsPZ()
+- OK never mind
+- No problem, is there anything else I can do for you?
+- Alright let's start over
+# SendActivity_2O4dzb()
+- OK you have logged off, thanks for using Pablow

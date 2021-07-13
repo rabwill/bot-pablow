@@ -1,8 +1,0 @@
-{
-  "$kind": "Microsoft.MultiLanguageRecognizer",
-  "id": "LUIS_bot-pablow",
-  "recognizers": {
-    "en-us": "bot-pablow.en-us.lu",
-    "": "bot-pablow.en-us.lu"
-  }
-}

@@ -1,0 +1,13 @@
+[import](common.lg)
+
+# SendActivity_K2pYaw()
+- OK I added ${dialog.taskName} to the Pablow Reminders list
+- Got it! I added this to your Pablow Reminders list in Todo with a reminder notification.
+- Your reminder was added to the Pablow Reminders list in Todo. Thanks for using Pablow!
+
+# OAuthInput_InvalidPrompt_5MKwDu()
+- Sorry something went wrong
+# OAuthInput_DefaultValueResponse_5MKwDu()
+- Sign-in successful
+# SendActivity_3gmIcc()
+- Created task list id ${user.taskListId} response was $(turn.createListResponse}

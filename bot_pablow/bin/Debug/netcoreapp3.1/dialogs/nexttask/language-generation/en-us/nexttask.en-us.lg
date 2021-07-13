@@ -1,0 +1,125 @@
+[import](common.lg)
+
+# NextTaskFirstResponse()
+-Let's see what else is on your plate...
+-Let's see what's next...
+-Let's check your to do's...
+-Let's see what else you need to do today...
+# SendActivity_pAUxRG()
+- ${NextTaskFirstResponse()}
+# SendActivity_lWtdQu()
+-Here are your tasks for today
+# SendActivity_vAuJJH()
+-${TasksAdaptiveCard(dialog.tasks.content.value)}
+# SendActivity_ua386v()
+-No tasks for today! 💪
+# TasksAdaptiveCard(response)
+[Activity
+  Attachments = ${json(getTasksAdaptiveCard(response))}
+]
+#getTasksAdaptiveCard(data)
+-```
+{
+    "type": "AdaptiveCard",
+    "body": [
+           {
+                    "type": "ColumnSet",
+                    "style": "emphasis",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "You tasks due today",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch",
+                            "padding": "None"
+                        }
+                       
+                    ],
+                    "padding": "Default",
+                    "spacing": "None"
+                },
+        {
+            "type": "Container",
+            "items": [ ${join(foreach(data, value, getTasksAdaptiveCardItem(value)), ',')}  ]
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
+```
+# getTasksAdaptiveCardItem(item)
+-```
+ {
+      "type": "ColumnSet",
+      "columns": [
+ {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "**${item.title}**",
+              "wrap": true
+            },
+           
+{
+    "type": "ColumnSet",
+    "columns": [    
+     
+      
+        {
+            "type": "Column",
+            "width": "auto",
+            "items": [
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                            "type": "Action.OpenUrl",
+                            "title": "Go to task",
+                            "style": "positive",
+                            "url": "https://to-do.office.com/tasks/id/${item.id}/details"
+                        }
+                    ],
+                    "horizontalAlignment": "Right"
+                }
+                
+            ]
+        },
+        {
+            "type": "Column",
+            "width": "auto",
+            "items": [
+                {
+                    "type": "ActionSet",
+                    "actions": [
+                        {
+                           "type": "Action.Submit",
+  "title": "Complete task",
+  "data": {
+    "msteams": {
+        "type": "messageBack",
+        "displayText": "Complete task : ${item.title}",
+        "text":  "bloop: ${item.title} and taskId ${item.id}",
+        "value": "task id is ${item.id} and title is ${item.title}"
+    }
+  }
+                        }
+                    ],
+                    "horizontalAlignment": "Right"
+                }
+                
+            ]
+        }
+    ]
+} 
+  ],
+          "width": 40
+        }]}
+```
+# OAuthInput_InvalidPrompt_hYFwxs()
+-

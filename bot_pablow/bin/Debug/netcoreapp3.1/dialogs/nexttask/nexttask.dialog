@@ -1,0 +1,94 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "1sWVwc",
+    "name": "nexttask",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "6LjcvJ"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "pAUxRG"
+          },
+          "activity": "${SendActivity_pAUxRG()}"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "Jjau9E"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "=settings.oauthConnectionName",
+          "text": "Please sign in to Microsoft 365 first",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",
+          "title": "Sign in to Microsoft 365",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "N3ADLh"
+          },
+          "method": "GET",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}",
+            "prefer": "outlook.timezone=\"E. Australia Standard Time\""
+          },
+          "responseType": "json",
+          "resultProperty": "dialog.tasks",
+          "url": "https://graph.microsoft.com/v1.0/me/todo/lists/tasks/tasks?$filter=status ne 'completed' and dueDateTime/dateTime gt '${startOfDay(getPastTime(1, 'Day'))}' and dueDateTime/dateTime le '${startOfDay(utcNow())}'",
+          "contentType": "application/json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "YlyB9p"
+          },
+          "condition": "=count(dialog.tasks.content.value)!=0",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "lWtdQu"
+              },
+              "activity": "${SendActivity_lWtdQu()}"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "vAuJJH"
+              },
+              "activity": "${SendActivity_vAuJJH()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "ua386v"
+              },
+              "activity": "${SendActivity_ua386v()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "nexttask.lg",
+  "recognizer": "nexttask.lu.qna",
+  "id": "nexttask"
+}

@@ -1,0 +1,84 @@
+[import](common.lg)
+
+# SendActivity_zgg8sk()
+-${Whatsup()}
+#Whatsup
+- Let's have a look at what's going on around you...
+- Let's check out what others are doing...
+- Let's see what's going on around you...
+# SendActivity_3BbPsk()
+-${TrendingAdaptiveCard()}
+# TrendingAdaptiveCard()
+[Activity
+  Attachments = ${json(genTrendingAdaptiveCard(dialog.whatsup.content.value))}
+]
+#genTrendingAdaptiveCard(data)
+-```
+{
+    "type": "AdaptiveCard",
+    "body": [
+       {
+            "type": "TextBlock",
+            "text": "Trending around you",
+            "wrap": true,
+            "weight": "Bolder"
+        },
+        {
+            "type": "Container",
+            "items": [
+               ${join(foreach(data, value, genTrendingAdaptiveCardItems(value)), ',')}
+            ]
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
+```
+#genTrendingAdaptiveCardItems(item)
+-```
+{
+  "type": "ColumnSet",
+  "columns": [
+    {
+      "type": "Column",
+      "width": "stretch",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${item.resourceVisualization.title}",
+          "wrap": true,
+          "size": "Small",
+          "weight": "Bolder"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${replace(item.resourceVisualization.previewText, '\r\n', ' ')}",
+          "wrap": true,
+          "size": "Small",
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "Column",
+      "width": "auto",
+      "items": [
+        {
+          "type": "ActionSet",
+          "actions": [
+            {
+              "type": "Action.OpenUrl",
+              "title": "View",
+              "style": "default",
+              "url": "${item.resourceReference.webUrl}"
+            }
+          ],
+          "horizontalAlignment": "Right"
+        }
+      ]
+    }
+  ]
+}
+```
+# OAuthInput_InvalidPrompt_hYFwxs()
+-

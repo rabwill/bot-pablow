@@ -1,0 +1,112 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "AYp4qv",
+    "name": "nextmeeting",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "ak4Cxy"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "HCVYq5"
+          },
+          "property": "dialog.meetingCount",
+          "value": "=int(coalesce(@meetingCount, $meetingCount))"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "QDviRT"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "=settings.oauthConnectionName",
+          "text": "Please sign in to Microsoft 365 first",
+          "title": "Login",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_QDviRT()}",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "wj66fZ"
+          },
+          "method": "GET",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}",
+            "Prefer": "outlook.timezone=\"E. Australia Standard Time\""
+          },
+          "resultProperty": "dialog.meeting",
+          "responseType": "json",
+          "url": "https://graph.microsoft.com/v1.0/me/calendar/events?$filter=Start/DateTime ge '${utcNow()}'&$orderby= Start/DateTime asc"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "4gc7CN"
+          },
+          "condition": "=count(dialog.meeting.content.value)!=0",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "GLNaRo"
+              },
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "z7m2ES"
+                  },
+                  "activity": "${SendActivity_z7m2ES()}"
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "sOPQIY"
+                  },
+                  "activity": "${SendActivity_sOPQIY()}"
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "X5APeE"
+                  },
+                  "activity": "${SendActivity_X5APeE()}"
+                }
+              ],
+              "condition": "dialog.meetingCount>0"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "O9FDc1"
+              },
+              "activity": "${SendActivity_O9FDc1()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "nextmeeting.lg",
+  "recognizer": "nextmeeting.lu.qna",
+  "id": "nextmeeting"
+}

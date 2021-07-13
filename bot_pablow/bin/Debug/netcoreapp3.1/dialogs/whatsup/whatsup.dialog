@@ -1,0 +1,125 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "iAtKin",
+    "name": "whatsup",
+    "description": "Get information about what's happening around the current user"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "1irKMt"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "zgg8sk"
+          },
+          "activity": "${SendActivity_zgg8sk()}"
+        },
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "P8ItNu"
+          },
+          "timeout": 900000,
+          "maxTurnCount": 3,
+          "allowInterruptions": true,
+          "connectionName": "=settings.oauthConnectionName",
+          "text": "Please sign in to Microsoft 365 first",
+          "property": "dialog.auth",
+          "invalidPrompt": "${OAuthInput_InvalidPrompt_hYFwxs()}",
+          "title": "Sign in to Microsoft 365",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "HKmpkt"
+          },
+          "method": "GET",
+          "url": "https://graph.microsoft.com/v1.0/me/insights/trending",
+          "headers": {
+            "Authorization": "Bearer ${dialog.auth.token}"
+          },
+          "resultProperty": "dialog.whatsup",
+          "responseType": "json"
+        },
+        {
+          "$kind": "Microsoft.Foreach",
+          "$designer": {
+            "id": "I13ty2"
+          },
+          "index": "dialog.foreach.index",
+          "value": "dialog.foreach.value",
+          "itemsProperty": "dialog.whatsup.content.value",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "NRX6Pm"
+              },
+              "property": "dialog.imageUrl",
+              "value": "=replace('https://graph.microsoft.com/v1.0/'+substring(dialog.foreach.value.resourceVisualization.previewImageUrl, indexOf(dialog.foreach.value.resourceVisualization.previewImageUrl, '/_api/v2.0/')+11), '/thumbnailContent', '')"
+            },
+            {
+              "$kind": "Microsoft.LogAction",
+              "$designer": {
+                "id": "Rv3tYc"
+              },
+              "text": "Retrieving ${dialog.imageUrl}....",
+              "label": "Retrieving ${dialog.imageUrl}....",
+              "traceActivity": true
+            },
+            {
+              "$kind": "Microsoft.HttpRequest",
+              "$designer": {
+                "id": "Muarc7"
+              },
+              "method": "GET",
+              "url": "${dialog.imageUrl}",
+              "headers": {
+                "Authorization": "Bearer ${dialog.auth.token}"
+              },
+              "resultProperty": "dialog.imageUrl",
+              "responseType": "json"
+            },
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "7VYJbg"
+              },
+              "property": "dialog.whatsup.content.value[dialog.foreach.index].resourceVisualization.previewImageUrl",
+              "value": "=dialog.imageUrl.content.url"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.LogAction",
+          "$designer": {
+            "id": "HHnEJ9"
+          },
+          "text": "${dialog.whatsup.content.value}",
+          "traceActivity": true,
+          "label": "Retrieved data"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "3BbPsk"
+          },
+          "activity": "${SendActivity_3BbPsk()}"
+        }
+      ]
+    }
+  ],
+  "generator": "whatsup.lg",
+  "recognizer": "whatsup.lu.qna",
+  "id": "whatsup"
+}

@@ -1,0 +1,33 @@
+{
+  "bot_pablow.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "whatsup": [
+        "whatsup.en-us"
+      ],
+      "remindme": [
+        "remindme.en-us"
+      ],
+      "cancel": "",
+      "nextmeeting": [
+        "nextmeeting.en-us"
+      ],
+      "whatsnext": [
+        "nextmeeting.en-us",
+        "nexttask.en-us"
+      ],
+      "taskcomplete": [
+        "completeTask.en-us"
+      ],
+      "logOff": ""
+    }
+  },
+  "remindme.en-us": {
+    "rootDialog": false,
+    "triggers": {
+      "": [
+        "remindme-addtask.en-us"
+      ]
+    }
+  }
+}
